@@ -12,6 +12,13 @@ Train a GAN using the techniques described in the paper
 """
 
 import os
+os.environ['TORCH_CUDA_ARCH_LIST'] = '8.6'
+os.environ["WORLD_SIZE"] = "1"
+os.environ["RANK"] = "0"
+os.environ["MASTER_ADDR"] = "127.0.0.1"
+os.environ["MASTER_PORT"] = "29500"
+
+import os
 import re
 import json
 from pathlib import Path
@@ -41,7 +48,7 @@ def is_power_of_two(n: int) -> bool:
 
 
 def init_dataset_kwargs(data: str, resolution: int) -> dnnlib.EasyDict:
-    d_kwargs = dnnlib.EasyDict(path=data, xflip=False, use_labels=True)
+    d_kwargs = dnnlib.EasyDict(path=data, xflip=False, use_labels=False)
     is_wds = len(glob(f'{data}/**/*.tar')) > 0  # check if files are tars, then it's a webdataset
     if is_wds:
         assert resolution, "Provide desired resolution when training on webdatasets."
@@ -93,10 +100,18 @@ def main(**kwargs) -> None:
     opts = dnnlib.EasyDict(kwargs)
     c = dnnlib.EasyDict()
 
-    # Networks.
-    c.D_kwargs = dnnlib.EasyDict(class_name='networks.discriminator.ProjectedDiscriminator')
-    c.G_kwargs = dnnlib.EasyDict(class_name='networks.generator.Generator', z_dim=64)
+# ✅ Add c_dim INSIDE the generator and discriminator configs:
+    c.G_kwargs = dnnlib.EasyDict(
+        class_name='networks.generator.Generator',
+        z_dim=0
+    )
+    c.D_kwargs = dnnlib.EasyDict(
+        class_name='networks.discriminator.ProjectedDiscriminator'
+    )
     c.G_kwargs.train_mode = opts.train_mode
+
+
+
 
     # Synthesis settings.
     cfg_synthesis = {

@@ -1,0 +1,221 @@
+Loading training set...
+D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\utils\data\sampler.py:76: UserWarning: `data_source` argument is not used and will be removed in 2.2.0.You may still have custom implementation that utilizes it.
+  warnings.warn(
+Num images:  80
+Image shape: [3, 512, 512]
+Label shape: [0]
+
+Constructing networks...
+C:\AI\stylegan-t\networks\shared.py:48: RuntimeWarning: divide by zero encountered in scalar divide
+  self.weight_gain = lr_multiplier / np.sqrt(in_features)
+D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\nn\modules\module.py:1326: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+Setting up PyTorch plugin "bias_act_plugin"... D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\utils\cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Done.
+Setting up PyTorch plugin "upfirdn2d_plugin"... Done.
+
+Generator                Parameters  Buffers  Output shape        Datatype
+---                      ---         ---      ---                 ---     
+mapping.mlp.fc0          -           -        [1, 0]              float32 
+mapping.mlp.fc1          -           -        [1, 0]              float32 
+mapping                  -           -        [1, 36, 0]          float32 
+synthesis.b8.input       4194308     6153     [1, 2048, 8, 8]     float32 
+synthesis.b8.convs1.0    37756929    80       [1, 2048, 8, 8]     float32 
+synthesis.b8.convs1.1    37763073    80       [1, 2048, 8, 8]     float32 
+synthesis.b8.convs1.2    37756929    80       [1, 2048, 8, 8]     float32 
+synthesis.b8.convs1.3    37763073    80       [1, 2048, 8, 8]     float32 
+synthesis.b8.convs1.4    37756929    80       [1, 2048, 8, 8]     float32 
+synthesis.b8.convs1.5    37763073    80       [1, 2048, 8, 8]     float32 
+synthesis.b8.torgb       12291       -        [1, 3, 8, 8]        float32 
+synthesis.b8:0           -           16       [1, 2048, 8, 8]     float32 
+synthesis.b8:1           -           -        [1, 3, 8, 8]        float32 
+synthesis.b16.conv0      37756929    272      [1, 2048, 16, 16]   float16 
+synthesis.b16.convs1.0   37756929    272      [1, 2048, 16, 16]   float16 
+synthesis.b16.convs1.1   37763073    272      [1, 2048, 16, 16]   float16 
+synthesis.b16.convs1.2   37756929    272      [1, 2048, 16, 16]   float16 
+synthesis.b16.convs1.3   37763073    272      [1, 2048, 16, 16]   float16 
+synthesis.b16.convs1.4   37756929    272      [1, 2048, 16, 16]   float16 
+synthesis.b16.convs1.5   37763073    272      [1, 2048, 16, 16]   float16 
+synthesis.b16.torgb      12291       -        [1, 3, 16, 16]      float16 
+synthesis.b16:0          -           16       [1, 2048, 16, 16]   float16 
+synthesis.b16:1          -           -        [1, 3, 16, 16]      float32 
+synthesis.b32.conv0      37756929    1040     [1, 2048, 32, 32]   float16 
+synthesis.b32.convs1.0   37756929    1040     [1, 2048, 32, 32]   float16 
+synthesis.b32.convs1.1   37763073    1040     [1, 2048, 32, 32]   float16 
+synthesis.b32.convs1.2   37756929    1040     [1, 2048, 32, 32]   float16 
+synthesis.b32.convs1.3   37763073    1040     [1, 2048, 32, 32]   float16 
+synthesis.b32.convs1.4   37756929    1040     [1, 2048, 32, 32]   float16 
+synthesis.b32.convs1.5   37763073    1040     [1, 2048, 32, 32]   float16 
+synthesis.b32.torgb      12291       -        [1, 3, 32, 32]      float16 
+synthesis.b32:0          -           16       [1, 2048, 32, 32]   float16 
+synthesis.b32:1          -           -        [1, 3, 32, 32]      float32 
+synthesis.b64.conv0      18881537    4112     [1, 1024, 64, 64]   float16 
+synthesis.b64.convs1.0   9441281     4112     [1, 1024, 64, 64]   float16 
+synthesis.b64.convs1.1   9444353     4112     [1, 1024, 64, 64]   float16 
+synthesis.b64.convs1.2   9441281     4112     [1, 1024, 64, 64]   float16 
+synthesis.b64.convs1.3   9444353     4112     [1, 1024, 64, 64]   float16 
+synthesis.b64.convs1.4   9441281     4112     [1, 1024, 64, 64]   float16 
+synthesis.b64.convs1.5   9444353     4112     [1, 1024, 64, 64]   float16 
+synthesis.b64.torgb      6147        -        [1, 3, 64, 64]      float16 
+synthesis.b64:0          -           16       [1, 1024, 64, 64]   float16 
+synthesis.b64:1          -           -        [1, 3, 64, 64]      float32 
+synthesis.b128.conv0     4722177     16400    [1, 512, 128, 128]  float16 
+synthesis.b128.convs1.0  2361345     16400    [1, 512, 128, 128]  float16 
+synthesis.b128.convs1.1  2362881     16400    [1, 512, 128, 128]  float16 
+synthesis.b128.convs1.2  2361345     16400    [1, 512, 128, 128]  float16 
+synthesis.b128.convs1.3  2362881     16400    [1, 512, 128, 128]  float16 
+synthesis.b128.convs1.4  2361345     16400    [1, 512, 128, 128]  float16 
+synthesis.b128.convs1.5  2362881     16400    [1, 512, 128, 128]  float16 
+synthesis.b128.torgb     3075        -        [1, 3, 128, 128]    float16 
+synthesis.b128:0         -           16       [1, 512, 128, 128]  float16 
+synthesis.b128:1         -           -        [1, 3, 128, 128]    float32 
+---                      ---         ---      ---                 ---     
+Total                    853867573   159481   -                   -       
+
+D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\TensorShape.cpp:3596.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+
+ProjectedDiscriminator             Parameters  Buffers  Output shape      Datatype
+---                                ---         ---      ---               ---     
+dino.norm                          -           -        [1, 3, 224, 224]  float32 
+dino.model.model.patch_embed.proj  295296      -        [1, 384, 14, 14]  float32 
+dino.model.model.pos_drop          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.0.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.0.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.0.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.0.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.0          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.1.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.1.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.1.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.1.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.1          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.2.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.2.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.2.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.2.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.2          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.3.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.3.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.3.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.3.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.3          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.4.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.4.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.4.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.4.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.4          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.5.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.5.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.5.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.5.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.5          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.6.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.6.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.6.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.6.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.6          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.7.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.7.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.7.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.7.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.7          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.8.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.8.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.8.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.8.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.8          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.9.norm1    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.9.attn     591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.9.norm2    768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.9.mlp      1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.9          -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.10.norm1   768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.10.attn    591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.10.norm2   768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.10.mlp     1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.10         -           -        [1, 197, 384]     float32 
+dino.model.model.blocks.11.norm1   768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.11.attn    591360      -        [1, 197, 384]     float32 
+dino.model.model.blocks.11.norm2   768         -        [1, 197, 384]     float32 
+dino.model.model.blocks.11.mlp     1181568     -        [1, 197, 384]     float32 
+dino.model.model.blocks.11         -           -        [1, 197, 384]     float32 
+dino.model.model.norm              768         -        [1, 197, 384]     float32 
+dino.model.rearrange.0             -           -        [1, 196, 384]     float32 
+dino.model.rearrange.1             -           -        [1, 384, 196]     float32 
+dino.model.rearrange.0             -           -        [1, 196, 384]     float32 
+dino.model.rearrange.1             -           -        [1, 384, 196]     float32 
+dino.model.rearrange.0             -           -        [1, 196, 384]     float32 
+dino.model.rearrange.1             -           -        [1, 384, 196]     float32 
+dino.model.rearrange.0             -           -        [1, 196, 384]     float32 
+dino.model.rearrange.1             -           -        [1, 384, 196]     float32 
+dino.model.rearrange.0             -           -        [1, 196, 384]     float32 
+dino.model.rearrange.1             -           -        [1, 384, 196]     float32 
+dino                               76032       -        -                 -       
+heads.0.main.0                     148608      768      [1, 384, 196]     float32 
+heads.0.main.1                     1328256     3840     [1, 384, 196]     float32 
+heads.0.cls                        385         385      [1, 1, 196]       float32 
+heads.1.main.0                     148608      768      [1, 384, 196]     float32 
+heads.1.main.1                     1328256     3840     [1, 384, 196]     float32 
+heads.1.cls                        385         385      [1, 1, 196]       float32 
+heads.2.main.0                     148608      768      [1, 384, 196]     float32 
+heads.2.main.1                     1328256     3840     [1, 384, 196]     float32 
+heads.2.cls                        385         385      [1, 1, 196]       float32 
+heads.3.main.0                     148608      768      [1, 384, 196]     float32 
+heads.3.main.1                     1328256     3840     [1, 384, 196]     float32 
+heads.3.cls                        385         385      [1, 1, 196]       float32 
+heads.4.main.0                     148608      768      [1, 384, 196]     float32 
+heads.4.main.1                     1328256     3840     [1, 384, 196]     float32 
+heads.4.cls                        385         385      [1, 1, 196]       float32 
+<top-level>                        -           -        [1, 980]          float32 
+---                                ---         ---      ---               ---     
+Total                              29051909    24965    -                 -       
+
+Distributing across 1 GPUs...
+Setting up training phases...
+Exporting sample images...
+Initializing logs...
+Training for 100 kimg...
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "C:\AI\stylegan-t\train.py", line 229, in <module>
+[rank0]:     main()  # pylint: disable=no-value-for-parameter
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\click\core.py", line 1130, in __call__
+[rank0]:     return self.main(*args, **kwargs)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\click\core.py", line 1055, in main
+[rank0]:     rv = self.invoke(ctx)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\click\core.py", line 1404, in invoke
+[rank0]:     return ctx.invoke(self.callback, **ctx.params)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\click\core.py", line 760, in invoke
+[rank0]:     return __callback(*args, **kwargs)
+[rank0]:   File "C:\AI\stylegan-t\train.py", line 226, in main
+[rank0]:     training_loop.training_loop(**c)
+[rank0]:   File "C:\AI\stylegan-t\training\training_loop.py", line 386, in training_loop
+[rank0]:     loss.accumulate_gradients(phase=phase.name, real_img=real_img, c_raw=real_c, gen_z=gen_z, cur_nimg=cur_nimg)
+[rank0]:   File "C:\AI\stylegan-t\training\loss.py", line 116, in accumulate_gradients
+[rank0]:     gen_img = self.run_G(gen_z, c=c_raw if self.train_text_encoder else c_enc)
+[rank0]:   File "C:\AI\stylegan-t\training\loss.py", line 69, in run_G
+[rank0]:     img = self.G.synthesis(ws)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "C:\AI\stylegan-t\networks\generator.py", line 486, in forward
+[rank0]:     x, img = block(x, img, cur_ws, **block_kwargs)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "C:\AI\stylegan-t\networks\generator.py", line 417, in forward
+[rank0]:     x = conv(x, next(w_iter), fused_modconv=fused_modconv, gain=np.sqrt(0.5), **layer_kwargs)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "D:\ANACONDACOY\envs\sgt\lib\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "C:\AI\stylegan-t\networks\generator.py", line 273, in forward
+[rank0]:     y = modulated_conv2d(x=x, weight=self.weight, styles=styles, noise=noise, up=self.up, fused_modconv=fused_modconv,
+[rank0]:   File "C:\AI\stylegan-t\networks\generator.py", line 68, in modulated_conv2d
+[rank0]:     w = w * styles.reshape(batch_size, 1, -1, 1, 1) # [NOIkk]
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 144.00 MiB. GPU 0 has a total capacity of 4.00 GiB of which 0 bytes is free. Of the allocated memory 10.37 GiB is allocated by PyTorch, and 126.93 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

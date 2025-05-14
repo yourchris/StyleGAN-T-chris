@@ -1,0 +1,64 @@
+{
+  "G_kwargs": {
+    "class_name": "networks.generator.Generator",
+    "z_dim": 0,
+    "train_mode": "all",
+    "synthesis_kwargs": {
+      "channel_base": 65536,
+      "channel_max": 2048,
+      "num_res_blocks": 3,
+      "architecture": "skip"
+    },
+    "img_resolution": 128
+  },
+  "D_kwargs": {
+    "class_name": "networks.discriminator.ProjectedDiscriminator"
+  },
+  "G_opt_kwargs": {
+    "class_name": "torch.optim.Adam",
+    "betas": [
+      0,
+      0.99
+    ],
+    "eps": 1e-08,
+    "lr": 0.002
+  },
+  "D_opt_kwargs": {
+    "class_name": "torch.optim.Adam",
+    "betas": [
+      0,
+      0.99
+    ],
+    "eps": 1e-08,
+    "lr": 0.002
+  },
+  "loss_kwargs": {
+    "class_name": "training.loss.ProjectedGANLoss",
+    "blur_init_sigma": 32,
+    "blur_fade_kimg": 1000,
+    "clip_weight": 0.0
+  },
+  "data_loader_kwargs": {
+    "pin_memory": true,
+    "num_workers": 3,
+    "prefetch_factor": 2
+  },
+  "training_set_kwargs": {
+    "path": "data/patterns512.zip",
+    "xflip": false,
+    "use_labels": false,
+    "class_name": "training.data_zip.ImageFolderDataset",
+    "resolution": 128,
+    "random_seed": 0
+  },
+  "random_seed": 0,
+  "image_snapshot_ticks": 5,
+  "network_snapshot_ticks": 5,
+  "metrics": [],
+  "total_kimg": 100,
+  "kimg_per_tick": 4,
+  "batch_size": 2,
+  "batch_gpu": 1,
+  "ema_kimg": 0.625,
+  "run_dir": "training-test\\00000-patterns512@128-full-gpus1-b2-bgpu1"
+}
