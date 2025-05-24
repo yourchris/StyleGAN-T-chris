@@ -86,7 +86,8 @@ def init_dataset_kwargs(data: str, resolution: int) -> dnnlib.EasyDict:
 @click.option('--suffix',          help='suffix of result dirname',         type=str, default='')
 @click.option('--metrics',         help='Quality metrics',                  type=parse_comma_separated_list, default=[])
 @click.option('--kimg',            help='Total training duration',          type=click.IntRange(min=1), default=25000)
-@click.option('--tick',            help='How often to print progress',      type=click.IntRange(min=1), default=4)
+@click.option('--kimg-per-tick', help='How often to print progress', type=float, default=4)
+#HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ABOVE THIS
 @click.option('--snap',            help='How often to save snapshots',      type=click.IntRange(min=1), default=100)
 @click.option('--seed',            help='Random seed',                      type=click.IntRange(min=0), default=0)
 @click.option('--fp32',            help='Disable mixed-precision',          type=bool, default=False)
@@ -145,7 +146,8 @@ def main(**kwargs) -> None:
     c.image_snapshot_ticks = c.network_snapshot_ticks = opts.snap
     c.metrics = opts.metrics
     c.total_kimg = opts.kimg
-    c.kimg_per_tick = opts.tick
+    c.kimg_per_tick = opts.kimg_per_tick
+    #HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ABOVE THIS
 
     # GPUs and batch size.
     c.batch_size = opts.batch
