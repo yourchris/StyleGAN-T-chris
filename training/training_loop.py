@@ -329,8 +329,8 @@ def training_loop(
     for name, module, opt_kwargs in [('D', D, D_opt_kwargs), ('G', G, G_opt_kwargs)]:
         
         if "betas" in opt_kwargs:
-        beta1, beta2 = opt_kwargs["betas"]
-        opt_kwargs["betas"] = (float(beta1), float(beta2))
+            beta1, beta2 = opt_kwargs["betas"]
+            opt_kwargs["betas"] = (float(beta1), float(beta2))
         #HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ABOVE THIS
         
         opt = dnnlib.util.construct_class_by_name(params=module.parameters(), **opt_kwargs)
