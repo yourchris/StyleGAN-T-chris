@@ -82,10 +82,12 @@ def init_dataset_kwargs(data: str, resolution: int) -> dnnlib.EasyDict:
 @click.option('--clip-weight',     help='Loss weight for clip loss',        type=float, default=0)
 @click.option('--blur-init',       help='Init blur width',                  type=click.IntRange(min=0), default=32,)
 @click.option('--blur-fade-kimg',  help='Discriminator blur duration',      type=click.IntRange(min=0), default=1000)
+@click.option('--xflip', help='Apply horizontal flip augmentation', type=bool, default=False)
+#HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ABOVE THIS
 # Misc settings.
 @click.option('--suffix',          help='suffix of result dirname',         type=str, default='')
 @click.option('--metrics',         help='Quality metrics',                  type=parse_comma_separated_list, default=[])
-@click.option('--kimg',            help='Total training duration',          type=click.IntRange(min=1), default=25000)
+@click.option('--kimg',            help='Total training duration',          type=click.IntRange(min=1), default=2000)
 @click.option('--kimg-per-tick', help='How often to print progress', type=float, default=4)
 #HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ABOVE THIS
 @click.option('--snap',            help='How often to save snapshots',      type=click.IntRange(min=1), default=100)
@@ -104,7 +106,7 @@ def main(**kwargs) -> None:
 # ✅ Add c_dim INSIDE the generator and discriminator configs:
     c.G_kwargs = dnnlib.EasyDict(
         class_name='networks.generator.Generator',
-        z_dim=0
+        z_dim=512
     )
     c.D_kwargs = dnnlib.EasyDict(
         class_name='networks.discriminator.ProjectedDiscriminator'
@@ -138,6 +140,7 @@ def main(**kwargs) -> None:
     # Data.
     c.data_loader_kwargs = dnnlib.EasyDict(pin_memory=True, num_workers=3, prefetch_factor=2)
     c.training_set_kwargs = init_dataset_kwargs(data=opts.data, resolution=opts.img_resolution)
+    c.training_set_kwargs.xflip = opts.xflip  # add xflip augmentation
     c.G_kwargs.img_resolution = c.training_set_kwargs.resolution
     desc = f'{Path(c.training_set_kwargs.path).stem}@{c.training_set_kwargs.resolution}-{opts.cfg}-'
 
